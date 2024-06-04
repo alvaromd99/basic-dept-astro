@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.7.0",
     "@fontsource-variable/hanken-grotesk": "^5.0.21",
     "astro": "^4.9.2",
+    "astro-icon": "^1.1.0",
     "typescript": "^5.4.5"
   }
 }
