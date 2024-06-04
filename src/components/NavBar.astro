@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import NavLink from "../components/NavLink.astro";
 ---
 
 <div>
@@ -7,22 +8,22 @@ import { Icon } from "astro-icon/components";
     <Icon name="logo" />
     <ul>
       <li>
-        <a href="">work</a>
+        <NavLink location="" text="work" />
       </li>
       <li>
-        <a href="">about</a>
+        <NavLink location="" text="about" />
       </li>
       <li>
-        <a href="">news</a>
+        <NavLink location="" text="news" />
       </li>
       <li>
-        <a href="">thinking</a>
+        <NavLink location="" text="thinking" />
       </li>
       <li>
-        <a href="">carrers</a>
+        <NavLink location="" text="carrers" />
       </li>
       <li>
-        <a href="">contact</a>
+        <NavLink location="" text="contact" />
       </li>
     </ul>
     <Icon name="points" />
@@ -54,11 +55,6 @@ import { Icon } from "astro-icon/components";
     li {
       font-size: 1rem;
       text-transform: uppercase;
-    }
-
-    a {
-      all: unset;
-      cursor: pointer;
     }
   }
 </style>

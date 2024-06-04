@@ -1,0 +1,25 @@
+---
+interface Props {
+  location: string;
+  text: string;
+}
+const { location, text } = Astro.props;
+---
+
+<a href={location}>{text}</a>
+
+<style>
+  a {
+    all: unset;
+    cursor: pointer;
+    padding-bottom: 2px;
+    background-image: linear-gradient(#f4f4f4 0 0);
+    background-position: right -100% bottom 0;
+    background-size: 200% 1px;
+    background-repeat: no-repeat;
+    transition: background-position 0.5s;
+  }
+  a:hover {
+    background-position: left 0% bottom 0;
+  }
+</style>
