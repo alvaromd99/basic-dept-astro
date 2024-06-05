@@ -31,13 +31,15 @@ import NavLink from "../components/NavLink.astro";
 </div>
 
 <style>
+  [data-icon] {
+    cursor: pointer;
+  }
   div {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
   }
-
   nav {
     color: white;
     display: flex;
@@ -46,15 +48,13 @@ import NavLink from "../components/NavLink.astro";
     padding-inline: 4rem;
     padding-block: 2rem;
   }
-
   ul {
     list-style-type: none;
     display: flex;
     gap: 2rem;
-
-    li {
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
+  }
+  li {
+    font-size: 1rem;
+    text-transform: uppercase;
   }
 </style>
