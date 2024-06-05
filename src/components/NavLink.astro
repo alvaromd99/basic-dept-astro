@@ -12,14 +12,46 @@ const { location, text } = Astro.props;
   a {
     all: unset;
     cursor: pointer;
+    position: relative;
     padding-bottom: 2px;
-    background-image: linear-gradient(#f4f4f4 0 0);
-    background-position: right -100% bottom 0;
-    background-size: 200% 1px;
-    background-repeat: no-repeat;
-    transition: background-position 0.5s;
   }
-  a:hover {
-    background-position: left 0% bottom 0;
+  a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #f4f4f4;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  a:hover::before {
+    transform: scaleX(1);
+  }
+  .mouse-enter::before {
+    transform-origin: top left;
+  }
+  .mouse-leave::before {
+    transform-origin: top right;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const linkElements = document.querySelectorAll("a");
+
+    linkElements.forEach((linkElement) => {
+      linkElement.addEventListener("mouseenter", () => {
+        linkElement.classList.remove("mouse-leave");
+        linkElement.classList.add("mouse-enter");
+      });
+
+      linkElement.addEventListener("mouseleave", () => {
+        linkElement.classList.remove("mouse-enter");
+        linkElement.classList.add("mouse-leave");
+      });
+    });
+  });
+</script>
