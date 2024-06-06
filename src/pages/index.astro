@@ -1,15 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import AwardCard from "../components/AwardCard.astro";
+
+const logos = ["adageLogo", "webbyLogo", "campaingLogo"];
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <Header />
+    <section class="award-section">
+      {logos.map((logo) => <AwardCard logoName={`${logo}`} text="hello" />)}
+    </section>
   </main>
 </Layout>
 <style>
   main {
     overflow-x: hidden;
+  }
+  .award-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 </style>

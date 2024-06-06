@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  logoName: string;
+  text: string;
+}
+
+const { logoName, text } = Astro.props;
+---
+
+<div class="award-card">
+  <Icon name={`${logoName}`} />
+  <p>Name example</p>
+</div>
+
+<style>
+  .award-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
