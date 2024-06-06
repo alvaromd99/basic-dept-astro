@@ -5,7 +5,7 @@ import NavLink from "../components/NavLink.astro";
 
 <div>
   <nav>
-    <Icon name="logo" width={200} height={40} />
+    <Icon name="logo" width={180} height={30} />
     <ul>
       <li>
         <NavLink location="" text="work" />
@@ -26,7 +26,7 @@ import NavLink from "../components/NavLink.astro";
         <NavLink location="" text="contact" />
       </li>
     </ul>
-    <Icon name="points" width={40} height={10} />
+    <Icon name="points" width={26} height={10} />
   </nav>
 </div>
 
@@ -45,16 +45,18 @@ import NavLink from "../components/NavLink.astro";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 4rem;
-    padding-block: 2rem;
+    padding-inline: 5rem;
+    padding-block: 3rem;
   }
   ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 2rem;
+    gap: 4rem;
   }
   li {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
   }
 </style>
