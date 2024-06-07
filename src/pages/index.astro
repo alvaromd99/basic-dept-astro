@@ -3,14 +3,25 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import AwardCard from "../components/AwardCard.astro";
 
-const logos = ["adageLogo", "webbyLogo", "campaingLogo"];
+const logos = [
+  { logo: "adageLogo", text: "desing and branding agency of the year" },
+  { logo: "webbyLogo", text: "agency of the year" },
+  {
+    logo: "campaingLogo",
+    text: "digital innovation agency of the year finalist",
+  },
+];
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <Header />
     <section class="award-section">
-      {logos.map((logo) => <AwardCard logoName={`${logo}`} text="hello" />)}
+      {
+        logos.map((award) => (
+          <AwardCard logoName={`${award.logo}`} text={award.text} />
+        ))
+      }
     </section>
   </main>
 </Layout>
@@ -21,5 +32,8 @@ const logos = ["adageLogo", "webbyLogo", "campaingLogo"];
   .award-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    padding-block: 8rem;
+    padding-inline: 2rem;
   }
 </style>
