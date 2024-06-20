@@ -8,8 +8,10 @@ import NavBar from "../components/NavBar.astro";
   <video
     src="https://cdn.sanity.io/files/8nn8fua5/production/c6fb986a862cbe643c40cbdd0318ebc495efb187.mp4"
     muted
-    loop></video>
+    loop
+    class="video"></video>
   <NavBar />
+  <div class="custom-cursor"></div>
 </header>
 <style>
   header {
@@ -25,4 +27,37 @@ import NavBar from "../components/NavBar.astro";
     height: 100%;
     object-fit: cover;
   }
+  .custom-cursor {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 </style>
+<script>
+  const videoElement = document.querySelector(".video") as HTMLElement;
+  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
+
+  const updateCursor = (event: MouseEvent) => {
+    if (!videoElement || !customCursor) return;
+
+    // Calculate the cursor position relative to the video element
+    const rect = videoElement?.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // Update the position of the custom cursor
+    customCursor.style.left = `${x}px`;
+    customCursor.style.top = `${y}px`;
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!videoElement) return;
+
+    videoElement.addEventListener("mousemove", updateCursor);
+  });
+</script>
