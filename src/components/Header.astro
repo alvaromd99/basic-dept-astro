@@ -39,8 +39,10 @@ import NavBar from "../components/NavBar.astro";
   }
 </style>
 <script>
-  const videoElement = document.querySelector(".video") as HTMLElement;
-  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
+  const videoElement = document.querySelector(".video") as HTMLVideoElement;
+  const customCursor = document.querySelector(
+    ".custom-cursor",
+  ) as HTMLDivElement;
 
   const updateCursor = (event: MouseEvent) => {
     if (!videoElement || !customCursor) return;
