@@ -5,18 +5,20 @@ import NavBar from "../components/NavBar.astro";
 ---
 
 <header>
-  <video
-    src="https://cdn.sanity.io/files/8nn8fua5/production/c6fb986a862cbe643c40cbdd0318ebc495efb187.mp4"
-    muted
-    loop
-    class="video"></video>
+  <div class="cursor-container">
+    <video
+      src="https://cdn.sanity.io/files/8nn8fua5/production/c6fb986a862cbe643c40cbdd0318ebc495efb187.mp4"
+      muted
+      loop
+      class="video"></video>
+    <div class="custom-cursor"></div>
+  </div>
   <NavBar />
-  <div class="custom-cursor"></div>
 </header>
 <style>
   header {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: relative;
   }
   video {
@@ -27,39 +29,65 @@ import NavBar from "../components/NavBar.astro";
     height: 100%;
     object-fit: cover;
   }
+  .cursor-container {
+    height: 100vh;
+    position: relative;
+  }
   .custom-cursor {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: red;
     position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
+    display: none;
   }
 </style>
 <script>
-  const videoElement = document.querySelector(".video") as HTMLVideoElement;
+  const containerElement = document.querySelector(
+    ".cursor-container",
+  ) as HTMLDivElement;
   const customCursor = document.querySelector(
     ".custom-cursor",
   ) as HTMLDivElement;
 
   const updateCursor = (event: MouseEvent) => {
-    if (!videoElement || !customCursor) return;
+    if (!containerElement || !customCursor) return;
 
     // Calculate the cursor position relative to the video element
-    const rect = videoElement?.getBoundingClientRect();
+    const rect = containerElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    // Update the position of the custom cursor
-    customCursor.style.left = `${x}px`;
-    customCursor.style.top = `${y}px`;
+    const isInContainer =
+      event.clientX >= rect.left &&
+      event.clientX <= rect.right &&
+      event.clientY >= rect.top &&
+      event.clientY <= rect.bottom;
+
+    if (isInContainer) {
+      // Update the position of the custom cursor
+      customCursor.style.left = `${x}px`;
+      customCursor.style.top = `${y}px`;
+    } else {
+      customCursor.style.display = "none";
+    }
+  };
+  const showCursor = () => {
+    customCursor.style.display = "block";
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!videoElement) return;
+  const hideCursor = () => {
+    customCursor.style.display = "none";
+  };
 
-    videoElement.addEventListener("mousemove", updateCursor);
+  const centerCursor = () => {};
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!containerElement) return;
+
+    containerElement.addEventListener("mouseenter", showCursor);
+    containerElement.addEventListener("mouseleave", hideCursor);
+    containerElement.addEventListener("mousemove", updateCursor);
   });
 </script>
