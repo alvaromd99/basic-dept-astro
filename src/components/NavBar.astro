@@ -3,42 +3,34 @@ import { Icon } from "astro-icon/components";
 import NavLink from "../components/NavLink.astro";
 ---
 
-<div>
-  <nav>
-    <Icon name="logo" width={180} height={30} />
-    <ul>
-      <li>
-        <NavLink location="" text="work" />
-      </li>
-      <li>
-        <NavLink location="" text="about" />
-      </li>
-      <li>
-        <NavLink location="" text="news" />
-      </li>
-      <li>
-        <NavLink location="" text="thinking" />
-      </li>
-      <li>
-        <NavLink location="" text="carrers" />
-      </li>
-      <li>
-        <NavLink location="" text="contact" />
-      </li>
-    </ul>
-    <Icon name="points" width={26} height={10} />
-  </nav>
-</div>
+<nav>
+  <Icon name="logo" width={180} height={30} />
+  <ul>
+    <li>
+      <NavLink location="" text="work" />
+    </li>
+    <li>
+      <NavLink location="" text="about" />
+    </li>
+    <li>
+      <NavLink location="" text="news" />
+    </li>
+    <li>
+      <NavLink location="" text="thinking" />
+    </li>
+    <li>
+      <NavLink location="" text="carrers" />
+    </li>
+    <li>
+      <NavLink location="" text="contact" />
+    </li>
+  </ul>
+  <Icon name="points" width={26} height={10} />
+</nav>
 
 <style>
   [data-icon] {
     cursor: pointer;
-  }
-  div {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
   nav {
     color: white;
