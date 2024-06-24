@@ -2,6 +2,7 @@
 // Short video https://cdn.sanity.io/files/8nn8fua5/production/c6fb986a862cbe643c40cbdd0318ebc495efb187.mp4
 // Long video https://cdn.sanity.io/files/8nn8fua5/production/4c749533161fc77c899a376ec6cd6da38973772f.mp4
 import NavBar from "../components/NavBar.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <header>
@@ -11,7 +12,12 @@ import NavBar from "../components/NavBar.astro";
       muted
       loop
       class="video"></video>
-    <div class="custom-cursor"></div>
+    <div class="custom-cursor">
+      <span>Watch<br />Reel</span>
+      <span>
+        <Icon name="logo" width={100} height={40} />
+      </span>
+    </div>
   </div>
   <div class="nav-container">
     <NavBar />
@@ -36,7 +42,7 @@ import NavBar from "../components/NavBar.astro";
     object-fit: cover;
   }
   .custom-cursor {
-    --cursorDimension: 7rem;
+    --cursorDimension: 7.5rem;
     width: var(--cursorDimension);
     height: var(--cursorDimension);
     border-radius: 50%;
@@ -48,6 +54,24 @@ import NavBar from "../components/NavBar.astro";
     transition:
       top 0.5s ease,
       left 0.5s ease;
+    span:first-child {
+      color: black;
+      text-transform: uppercase;
+      text-align: center;
+      position: absolute;
+      transform: translate(-50%, -40%);
+      top: 50%;
+      left: 50%;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    span:last-child {
+      color: white;
+      position: absolute;
+      transform: translate(-50%, 140%);
+      top: 50%;
+      left: 50%;
+    }
   }
   .nav-container {
     width: 100%;
