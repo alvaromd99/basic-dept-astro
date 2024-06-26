@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import AwardCard from "../components/AwardCard.astro";
+import { Icon } from "astro-icon/components";
+import CustomBtn from "../components/CustomBtn.astro";
 
 const logos = [
   { logo: "adageLogo", text: "desing and branding agency of the year" },
@@ -23,12 +25,24 @@ const logos = [
         ))
       }
     </section>
+    <hr />
     <section class="work-section">
-      <div class="work-header"></div>
+      <div class="work-header">
+        <div>
+          <p class="work-para">
+            BASIC/DEPT® is a global branding and digital design agency building
+            products, services, and eCommerce experiences that turn cultural
+            values into company value.
+          </p>
+          <CustomBtn text="see the work" />
+        </div>
+        <Icon name={"bigBasic"} width={500} height={300} />
+      </div>
       <div class="work-display"></div>
     </section>
   </main>
 </Layout>
+
 <style>
   main {
     overflow-x: hidden;
@@ -39,5 +53,23 @@ const logos = [
     gap: 3rem;
     padding-block: 8rem;
     padding-inline: 2rem;
+  }
+  .work-section {
+    padding-inline: 4rem;
+  }
+  hr {
+    margin-inline: 4rem;
+    margin-bottom: 2rem;
+  }
+  .work-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+  .work-para {
+    font-size: 2.2rem;
+  }
+  [data-icon] {
+    justify-self: end;
   }
 </style>
